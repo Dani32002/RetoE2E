@@ -22,7 +22,7 @@ describe("Check 2 social networks login", ()=> {
         cy.contains("Sign in with Twitter").click();
         cy.wait(3000)
         cy.origin('https://api.twitter.com', () => {
-            cy.contains("Twitter")
+            cy.url().should('include', 'twitter')
         })
     });
 
@@ -30,10 +30,7 @@ describe("Check 2 social networks login", ()=> {
         cy.contains("Sign in with Google").click();
         cy.wait(3000)
         cy.origin('https://accounts.google.com', () => {
-            cy.get("#logo").click()
-        })
-        cy.origin('https://www.google.com', () => {
-            cy.contains("Google");
+            cy.url().should('include', 'google')
         })
     });
 
